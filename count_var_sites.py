@@ -25,6 +25,11 @@ def count_var_site(seq_objects):
             count += 1
     return count
 
+def create_aa_alignment(sequences):
+    with open("ExampleProteinAlignment.fasta", "w") as outfile:
+        for seq_id, sequence in sequences.items():
+            outfile.write(str(seq_id) + "\n")
+            outfile.write(str(sequence) + "\n")
 
 def main():
     alignment = sys.argv[1]
@@ -32,6 +37,7 @@ def main():
     translated_seqs = translate_to_aa(sequences)
     var_site_n = count_var_site(sequences)
     var_site_aa = count_var_site(translated_seqs)
+    create_aa_alignment(translated_seqs)
     print(var_site_n, var_site_aa)
 
 if __name__=="__main__":
