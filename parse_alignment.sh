@@ -2,8 +2,8 @@
 
 alignment="$1"
 
-total_samples=$(grep "^>" "$alignment")
-unique_dates=$(grep "\b\d{1,2}-[a-zA-Z]{3}\b" | sort | uniq)
+total_samples=$(grep "^>" "$alignment" | wc -l)
+unique_dates=$(grep "^>Sample[0-9]+_[0-9]{1,2}+-[a-zA-Z]+" "$alignment" | sort | uniq)
 num_unique=$(echo "$unique_dates" | wc -l)
 
 echo "Total Samples: $total_samples" > log.txt
