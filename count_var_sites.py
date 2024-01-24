@@ -26,9 +26,10 @@ def count_var_site(seq_objects):
     return count
 
 def create_aa_alignment(sequences):
-    with open("ExampleProteinAlignment.fasta", "w") as outfile:
+    with open("ProteinAlignment.fasta", "w") as outfile:
         for seq_id, sequence in sequences.items():
-            outfile.write(str(seq_id) + "\n")
+            full_header = ">" + seq_id.description
+            outfile.write(str(full_header) + "\n")
             outfile.write(str(sequence) + "\n")
 
 def main():
