@@ -1,0 +1,4 @@
+Total Samples: 100
+Unique Sample Dates: 300
+Number of Variable Sites in the DNA Alignment: 13
+Number of Variable Sites in the Amino Acid Alignment: 11

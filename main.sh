@@ -31,7 +31,7 @@ directive(){
     while read -r line
     do
         if [[ $line == ">"* ]]; then
-            seq_id=$(echo "$line" | tr -d ">" | tr -d " ")
+            seq_id=$(echo "$line" | tr -d ">")
             seq_dir="$output_dir/$seq_id"
             mkdir -p "$seq_dir"
             echo "$line" > "$seq_dir/dna_sequence.fasta"
@@ -44,7 +44,8 @@ directive(){
 	while read -r line
     do
         if [[ $line == ">"* ]]; then
-            seq_id=$(echo "$line" | tr -d ">" | tr -d " ")
+            seq_id=$(echo "$line" | tr -d ">")
+            seq_dir="$output_dir/$seq_id"
             echo "$line" > "$seq_dir/aa_sequence.fasta"
             read -r aa_sequence
             echo "$aa_sequence" >> "$seq_dir/aa_sequence.fasta"
