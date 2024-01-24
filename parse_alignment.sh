@@ -2,6 +2,8 @@
 
 alignment="$1"
 
+sed "s/ /-/g" "$alignment" > ModifiedAlignment.fasta
+
 total_samples=$(grep "^>" "$alignment" | wc -l)
 
 unique_dates=$(grep -o "[0-9]*-[a-zA-Z]*" "$alignment" | uniq | wc -l)
