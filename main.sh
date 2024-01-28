@@ -21,7 +21,6 @@ seq_process(){
 
 seq_process
 
-palignment="ProteinAlignment.fasta"
 
 directive(){
     output_dir="sequence_data"
@@ -35,22 +34,22 @@ directive(){
             seq_dir="$output_dir/$seq_id"
             mkdir -p "$seq_dir"
             echo "$line" > "$seq_dir/dna_sequence.fasta"
-            read -r dna_sequence
+            read dna_sequence
             echo "$dna_sequence" >> "$seq_dir/dna_sequence.fasta"
         fi
-    done < "$alignment"
+    done<"$alignment"
     echo "Nucleotide sequences sorted."
 
-	while read -r line
+	while read line
     do
         if [[ $line == ">"* ]]; then
             seq_id=$(echo "$line" | tr -d ">")
             seq_dir="$output_dir/$seq_id"
             echo "$line" > "$seq_dir/aa_sequence.fasta"
-            read -r aa_sequence
+            read aa_sequence
             echo "$aa_sequence" >> "$seq_dir/aa_sequence.fasta"
         fi
-    done < "$palignment"
+    done<"ProteinAlignment.fasta"
     echo "Amino acid sequences sorted."
 
     echo "Directory creation completed."
